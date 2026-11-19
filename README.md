@@ -15,7 +15,7 @@
 
 ## Настройка Jenkins
 
-1. Установить плагины Pipeline, Git, Credentials Binding, Mailer и Pipeline Stage View.
+1. Установить плагины Pipeline, Git, Credentials Binding, Mailer, Timestamper и Pipeline Stage View.
 2. Создать учебные учётные данные типа Secret text с ID `practice4-demo-key` и произвольным демонстрационным значением. Не использовать реальные ключи облачных сервисов.
 3. Настроить SMTP для учебного почтового сервера Mailpit: хост `mailpit`, порт `1025`, без TLS и аутентификации. Сообщения остаются в локальном стенде.
 4. Создать задание типа Pipeline. Выбрать Pipeline script from SCM → Git, указать URL этого репозитория, ветку `*/main` и Script Path `Jenkinsfile`.
