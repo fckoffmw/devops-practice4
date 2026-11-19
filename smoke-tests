@@ -1,0 +1,11 @@
+#!/bin/sh
+set -eu
+target=${1:-staging}
+case "$target" in
+    staging|prod) ;;
+    *) echo 'Допустимые окружения: staging, prod' >&2; exit 2 ;;
+esac
+test -s "deployments/$target/index.html"
+cmp dist/index.html "deployments/$target/index.html"
+grep -q 'status=deployed' "deployments/$target/status.txt"
+echo "SMOKE OK: файлы окружения $target доступны и совпадают с артефактом"

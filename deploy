@@ -1,0 +1,12 @@
+#!/bin/sh
+set -eu
+target=${1:-}
+case "$target" in
+    staging|prod) ;;
+    *) echo 'Использование: sh deploy staging|prod' >&2; exit 2 ;;
+esac
+test -s dist/index.html
+mkdir -p "deployments/$target"
+cp dist/index.html dist/build-info.txt "deployments/$target/"
+printf 'environment=%s\nstatus=deployed\n' "$target" > "deployments/$target/status.txt"
+echo "DEPLOY OK: учебное развёртывание в deployments/$target"
